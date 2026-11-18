@@ -9,6 +9,30 @@
     <title>Cricket Zone | IPL 2026 Tickets</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <!-- Toast Message Styling -->
+    <style>
+        .toast-message {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            background: #101d35;
+            color: white;
+            padding: 14px 22px;
+            border-radius: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: 0.3s ease;
+            z-index: 1000;
+        }
+
+        .toast-message.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 
 <body>
@@ -219,28 +243,31 @@
 
             <div class="booking-container">
 
-                <form class="booking-form">
+                <form class="booking-form" id="bookingForm">
 
+                    <!-- Match Selection -->
                     <label for="match">Select Match:</label>
 
                     <select id="match" required>
                         <option value="">Choose Match</option>
-                        <option>CSK vs MI</option>
-                        <option>RCB vs KKR</option>
-                        <option>MI vs RCB</option>
+                        <option value="CSK vs MI">CSK vs MI</option>
+                        <option value="RCB vs KKR">RCB vs KKR</option>
+                        <option value="MI vs RCB">MI vs RCB</option>
                     </select>
 
 
+                    <!-- Stand Category -->
                     <label for="category">Stand Category:</label>
 
                     <select id="category" required>
                         <option value="">Choose Category</option>
-                        <option>General - ₹800</option>
-                        <option>Premium - ₹1500</option>
-                        <option>VIP - ₹3000</option>
+                        <option value="General">General</option>
+                        <option value="Premium">Premium</option>
+                        <option value="VIP">VIP</option>
                     </select>
 
 
+                    <!-- Ticket Quantity -->
                     <label for="quantity">Number of Tickets:</label>
 
                     <input
@@ -248,11 +275,13 @@
                         id="quantity"
                         min="1"
                         max="10"
+                        value="1"
                         placeholder="Enter quantity"
                         required
                     >
 
 
+                    <!-- Personal Details -->
                     <label for="name">Name:</label>
 
                     <input
@@ -290,34 +319,34 @@
                 </form>
 
 
-                <!-- Booking Summary -->
-                <div class="summary-card">
+                <!-- Activity 7: Live Booking Summary -->
+                <div class="summary-card" id="bookingSummary">
 
                     <h3>Booking Summary</h3>
 
                     <div class="summary-item">
                         <span>Match</span>
-                        <span>Not selected</span>
+                        <span id="summaryMatch">Not selected</span>
                     </div>
 
                     <div class="summary-item">
                         <span>Stand</span>
-                        <span>Not selected</span>
+                        <span id="summaryStand">Not selected</span>
                     </div>
 
                     <div class="summary-item">
                         <span>Ticket Price</span>
-                        <span>₹0</span>
+                        <span id="summaryPrice">₹0</span>
                     </div>
 
                     <div class="summary-item">
                         <span>Quantity</span>
-                        <span>0</span>
+                        <span id="summaryQuantity">0</span>
                     </div>
 
                     <div class="total">
                         <span>Total Amount</span>
-                        <h2>₹0</h2>
+                        <h2 id="totalAmount">₹0</h2>
                     </div>
 
                 </div>
@@ -442,7 +471,12 @@
     </footer>
 
 
-    <!-- ACTIVITY 5: JAVASCRIPT CONNECTION -->
+    <!-- Activity 7: Toast Notification -->
+    <div id="toastMessage" class="toast-message"
+         role="status" aria-live="polite"></div>
+
+
+    <!-- JavaScript Connection -->
     <script src="app.js"></script>
 
 </body>
