@@ -1,7 +1,11 @@
 
-// ACTIVITY 5: JAVASCRIPT BASICS AND USER INTERACTION
+// ==========================================
+// ACTIVITY 5: JAVASCRIPT BASICS AND INTERACTION
+// ==========================================
+
 
 // 1. Reusable Toast Notification Function
+
 function showToast(message) {
 
     const toast = document.createElement("div");
@@ -11,10 +15,10 @@ function showToast(message) {
 
     document.body.appendChild(toast);
 
-    // Remove notification after 3 seconds
     setTimeout(function() {
         toast.remove();
     }, 3000);
+
 }
 
 
@@ -42,10 +46,12 @@ bookButtons.forEach(function(button) {
 });
 
 
+// ==========================================
 // ACTIVITY 7: SELECTOR FORMS AND LIVE INTERACTION
+// ==========================================
 
 
-// 3. Selecting Form Elements Using DOM Selectors
+// 3. Selecting Form Elements
 
 const matchSelect = document.getElementById("match");
 
@@ -67,7 +73,7 @@ const summaryQuantity = document.getElementById("summaryQuantity");
 const totalAmount = document.getElementById("totalAmount");
 
 
-// 5. Ticket Prices for Different Matches
+// 5. Ticket Prices
 
 const ticketPrices = {
 
@@ -102,19 +108,12 @@ function updateSummary() {
 
     let quantity = Number(quantityInput.value);
 
-
-    // Check valid ticket quantity
-
     if (!Number.isInteger(quantity) || quantity < 1 || quantity > 10) {
 
         quantity = 1;
-
         quantityInput.value = 1;
 
     }
-
-
-    // Check whether match and category are selected
 
     if (selectedMatch === "" || selectedCategory === "") {
 
@@ -132,18 +131,9 @@ function updateSummary() {
 
     }
 
-
-    // Get ticket price
-
     const price = ticketPrices[selectedMatch][selectedCategory];
 
-
-    // Calculate total price
-
     const total = price * quantity;
-
-
-    // Update Booking Summary Card
 
     summaryMatch.textContent = selectedMatch;
 
@@ -154,9 +144,6 @@ function updateSummary() {
     summaryQuantity.textContent = quantity;
 
     totalAmount.textContent = "₹" + total.toLocaleString("en-IN");
-
-
-    // Display notification
 
     showToast("Booking Summary Updated!");
 
@@ -172,7 +159,7 @@ categorySelect.addEventListener("change", updateSummary);
 quantityInput.addEventListener("input", updateSummary);
 
 
-// 8. Notification for Confirm Booking Button
+// 8. Booking Form Submission
 
 const bookingForm = document.querySelector(".booking-form");
 
@@ -183,3 +170,143 @@ bookingForm.addEventListener("submit", function(event) {
     showToast("Booking form submitted successfully!");
 
 });
+
+
+// ==========================================
+// ACTIVITY 8: RESPONSIVE LAYOUT AND INTERACTION
+// ==========================================
+
+
+// 9. Hamburger Menu Toggle
+
+const menuToggle = document.getElementById("menuToggle");
+
+const navLinks = document.getElementById("navLinks");
+
+if (menuToggle && navLinks) {
+
+    menuToggle.addEventListener("click", function() {
+
+        navLinks.classList.toggle("active");
+
+        const isOpen = navLinks.classList.contains("active");
+
+        menuToggle.classList.toggle("active");
+
+        menuToggle.setAttribute("aria-expanded", isOpen);
+
+    });
+
+
+    // Close Menu After Clicking a Navigation Link
+
+    const navigationItems = navLinks.querySelectorAll("a");
+
+    navigationItems.forEach(function(link) {
+
+        link.addEventListener("click", function() {
+
+            navLinks.classList.remove("active");
+
+            menuToggle.classList.remove("active");
+
+            menuToggle.setAttribute("aria-expanded", "false");
+
+        });
+
+    });
+
+}
+
+
+// 10. Filter Match Cards by Team
+
+const teamFilter = document.getElementById("teamFilter");
+
+const matchCards = document.querySelectorAll(".match-card");
+
+if (teamFilter) {
+
+    teamFilter.addEventListener("change", function() {
+
+        const selectedTeam = teamFilter.value;
+
+        let visibleCount = 0;
+
+        matchCards.forEach(function(card) {
+
+            const teams = card.dataset.teams.split(" ");
+
+            if (
+                selectedTeam === "all" ||
+                teams.includes(selectedTeam)
+            ) {
+
+                card.style.display = "";
+
+                visibleCount++;
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+        showToast(visibleCount + " match(es) found!");
+
+    });
+
+}
+
+
+// 11. Grid and List View Toggle
+
+const gridViewBtn = document.getElementById("gridViewBtn");
+
+const listViewBtn = document.getElementById("listViewBtn");
+
+const matchContainer = document.getElementById("matchContainer");
+
+
+if (gridViewBtn && listViewBtn && matchContainer) {
+
+    gridViewBtn.addEventListener("click", function() {
+
+        matchContainer.classList.remove("list-view");
+
+        matchContainer.classList.add("grid-view");
+
+        gridViewBtn.classList.add("active");
+
+        listViewBtn.classList.remove("active");
+
+        gridViewBtn.setAttribute("aria-pressed", "true");
+
+        listViewBtn.setAttribute("aria-pressed", "false");
+
+        showToast("Grid View Enabled!");
+
+    });
+
+
+    listViewBtn.addEventListener("click", function() {
+
+        matchContainer.classList.remove("grid-view");
+
+        matchContainer.classList.add("list-view");
+
+        listViewBtn.classList.add("active");
+
+        gridViewBtn.classList.remove("active");
+
+        listViewBtn.setAttribute("aria-pressed", "true");
+
+        gridViewBtn.setAttribute("aria-pressed", "false");
+
+        showToast("List View Enabled!");
+
+    });
+
+}

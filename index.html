@@ -10,7 +10,6 @@
 
     <link rel="stylesheet" href="style.css">
 
-    <!-- Toast Message Styling -->
     <style>
         .toast-message {
             position: fixed;
@@ -37,13 +36,25 @@
 
 <body>
 
-    <!-- Header and Navigation -->
+    <!-- Header and Responsive Navigation -->
     <header>
         <nav class="navbar">
 
             <h2 class="logo">🏏 CRICKET ZONE</h2>
 
-            <ul>
+            <!-- Hamburger Menu -->
+            <button class="menu-toggle" id="menuToggle"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="navLinks">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#matches">Matches</a></li>
                 <li><a href="#booking">Book Ticket</a></li>
                 <li><a href="#mybookings">My Bookings</a></li>
@@ -57,7 +68,7 @@
 
     <main>
 
-        <!-- Hero Banner -->
+        <!-- Hero Section -->
         <section class="hero">
 
             <div class="hero-content">
@@ -115,7 +126,6 @@
 
                 </div>
 
-
                 <div class="info-box">
 
                     <h3>Major Match Venues</h3>
@@ -134,7 +144,7 @@
         </section>
 
 
-        <!-- Match Schedule -->
+        <!-- Match Schedule - Activity 8 -->
         <section class="section" id="matches">
 
             <h2>Match Schedule</h2>
@@ -143,88 +153,109 @@
                 Explore upcoming fixtures and ticket prices.
             </p>
 
+            <!-- Team Filter and View Toggle -->
             <div class="filter-area">
 
                 <label for="teamFilter">Filter by Team:</label>
 
                 <select id="teamFilter">
-                    <option>All Teams</option>
-                    <option>CSK</option>
-                    <option>MI</option>
-                    <option>RCB</option>
-                    <option>KKR</option>
+                    <option value="all">All Teams</option>
+                    <option value="CSK">CSK</option>
+                    <option value="MI">MI</option>
+                    <option value="RCB">RCB</option>
+                    <option value="KKR">KKR</option>
                 </select>
+
+                <div class="view-toggle"
+                    role="group"
+                    aria-label="Choose match layout">
+
+                    <button type="button"
+                        id="gridViewBtn"
+                        class="view-btn active"
+                        aria-pressed="true">
+                        Grid View
+                    </button>
+
+                    <button type="button"
+                        id="listViewBtn"
+                        class="view-btn"
+                        aria-pressed="false">
+                        List View
+                    </button>
+
+                </div>
 
             </div>
 
 
-            <div class="table-container">
+            <!-- CSS Grid Match Cards -->
+            <div class="match-grid" id="matchContainer">
 
-                <table>
+                <!-- Match 1 -->
+                <article class="match-card" data-teams="CSK MI">
 
-                    <thead>
-                        <tr>
-                            <th>Match No.</th>
-                            <th>Teams</th>
-                            <th>Date & Time</th>
-                            <th>Venue</th>
-                            <th>General</th>
-                            <th>Premium</th>
-                            <th>VIP</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
+                    <span class="match-number">MATCH 01</span>
 
+                    <h3>CSK vs MI</h3>
 
-                    <tbody>
+                    <p><strong>Date:</strong> 10 April 2026, 7:30 PM</p>
 
-                        <tr>
-                            <td>01</td>
-                            <td>CSK vs MI</td>
-                            <td>10 April 2026, 7:30 PM</td>
-                            <td>Chennai</td>
-                            <td>₹800</td>
-                            <td>₹1500</td>
-                            <td>₹3000</td>
+                    <p><strong>Venue:</strong> Chennai</p>
 
-                            <td>
-                                <a href="#booking" class="book-btn">Book</a>
-                            </td>
-                        </tr>
+                    <div class="ticket-prices">
+                        <span>General: ₹800</span>
+                        <span>Premium: ₹1500</span>
+                        <span>VIP: ₹3000</span>
+                    </div>
+
+                    <a href="#booking" class="book-btn">Book Ticket</a>
+
+                </article>
 
 
-                        <tr>
-                            <td>02</td>
-                            <td>RCB vs KKR</td>
-                            <td>12 April 2026, 7:30 PM</td>
-                            <td>Bengaluru</td>
-                            <td>₹1000</td>
-                            <td>₹2000</td>
-                            <td>₹4000</td>
+                <!-- Match 2 -->
+                <article class="match-card" data-teams="RCB KKR">
 
-                            <td>
-                                <a href="#booking" class="book-btn">Book</a>
-                            </td>
-                        </tr>
+                    <span class="match-number">MATCH 02</span>
+
+                    <h3>RCB vs KKR</h3>
+
+                    <p><strong>Date:</strong> 12 April 2026, 7:30 PM</p>
+
+                    <p><strong>Venue:</strong> Bengaluru</p>
+
+                    <div class="ticket-prices">
+                        <span>General: ₹1000</span>
+                        <span>Premium: ₹2000</span>
+                        <span>VIP: ₹4000</span>
+                    </div>
+
+                    <a href="#booking" class="book-btn">Book Ticket</a>
+
+                </article>
 
 
-                        <tr>
-                            <td>03</td>
-                            <td>MI vs RCB</td>
-                            <td>15 April 2026, 7:30 PM</td>
-                            <td>Mumbai</td>
-                            <td>₹900</td>
-                            <td>₹1800</td>
-                            <td>₹3500</td>
+                <!-- Match 3 -->
+                <article class="match-card" data-teams="MI RCB">
 
-                            <td>
-                                <a href="#booking" class="book-btn">Book</a>
-                            </td>
-                        </tr>
+                    <span class="match-number">MATCH 03</span>
 
-                    </tbody>
+                    <h3>MI vs RCB</h3>
 
-                </table>
+                    <p><strong>Date:</strong> 15 April 2026, 7:30 PM</p>
+
+                    <p><strong>Venue:</strong> Mumbai</p>
+
+                    <div class="ticket-prices">
+                        <span>General: ₹900</span>
+                        <span>Premium: ₹1800</span>
+                        <span>VIP: ₹3500</span>
+                    </div>
+
+                    <a href="#booking" class="book-btn">Book Ticket</a>
+
+                </article>
 
             </div>
 
@@ -240,12 +271,10 @@
                 Complete the form to reserve your stadium seats.
             </p>
 
-
             <div class="booking-container">
 
                 <form class="booking-form" id="bookingForm">
 
-                    <!-- Match Selection -->
                     <label for="match">Select Match:</label>
 
                     <select id="match" required>
@@ -256,7 +285,6 @@
                     </select>
 
 
-                    <!-- Stand Category -->
                     <label for="category">Stand Category:</label>
 
                     <select id="category" required>
@@ -267,7 +295,6 @@
                     </select>
 
 
-                    <!-- Ticket Quantity -->
                     <label for="quantity">Number of Tickets:</label>
 
                     <input
@@ -281,7 +308,6 @@
                     >
 
 
-                    <!-- Personal Details -->
                     <label for="name">Name:</label>
 
                     <input
@@ -365,7 +391,6 @@
                 View your reserved tickets here.
             </p>
 
-
             <div class="table-container">
 
                 <table>
@@ -380,7 +405,6 @@
                             <th>Amount</th>
                         </tr>
                     </thead>
-
 
                     <tbody>
 
@@ -399,7 +423,7 @@
         </section>
 
 
-        <!-- Guidelines -->
+        <!-- Booking Guidelines - CSS Grid -->
         <section class="section" id="guidelines">
 
             <h2>Booking Guidelines</h2>
@@ -407,7 +431,6 @@
             <p class="intro">
                 Important information for every cricket fan.
             </p>
-
 
             <div class="guideline-container">
 
@@ -472,8 +495,11 @@
 
 
     <!-- Activity 7: Toast Notification -->
-    <div id="toastMessage" class="toast-message"
-         role="status" aria-live="polite"></div>
+    <div id="toastMessage"
+        class="toast-message"
+        role="status"
+        aria-live="polite">
+    </div>
 
 
     <!-- JavaScript Connection -->

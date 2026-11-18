@@ -1,5 +1,8 @@
 
-/* Basic Page Styling */
+/* ==========================================
+   BASIC PAGE STYLING
+========================================== */
+
 * {
     margin: 0;
     padding: 0;
@@ -17,7 +20,11 @@ body {
     line-height: 1.6;
 }
 
-/* Navigation Bar */
+
+/* ==========================================
+   NAVIGATION BAR - FLEXBOX
+========================================== */
+
 header {
     background-color: #101d35;
     padding: 18px 7%;
@@ -27,7 +34,6 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
     gap: 15px;
 }
 
@@ -41,7 +47,7 @@ header {
     display: flex;
     list-style: none;
     gap: 25px;
-    flex-wrap: wrap;
+    align-items: center;
 }
 
 .navbar a {
@@ -55,7 +61,46 @@ header {
     color: #ff9d32;
 }
 
-/* Hero Section */
+
+/* Hamburger Menu */
+
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 26px;
+    height: 3px;
+    background-color: white;
+    margin: 5px 0;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+/* Hamburger animation */
+
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+
+/* ==========================================
+   HERO SECTION
+========================================== */
+
 .hero {
     min-height: 430px;
     background: linear-gradient(
@@ -63,6 +108,7 @@ header {
         #101d35,
         #243e62
     );
+
     display: flex;
     align-items: center;
     padding: 60px 8%;
@@ -127,7 +173,11 @@ header {
     color: #101d35;
 }
 
-/* Common Section Styling */
+
+/* ==========================================
+   COMMON SECTION STYLING
+========================================== */
+
 .section {
     padding: 65px 8%;
 }
@@ -145,7 +195,11 @@ header {
     margin-bottom: 25px;
 }
 
-/* About Section */
+
+/* ==========================================
+   ABOUT SECTION - CSS GRID
+========================================== */
+
 .about-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -173,24 +227,175 @@ header {
     margin-bottom: 9px;
 }
 
-/* Team Filter */
+
+/* ==========================================
+   ACTIVITY 8 - TEAM FILTER
+========================================== */
+
 .filter-area {
-    margin: 25px 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 25px 0;
 }
 
 .filter-area label {
     font-weight: bold;
-    margin-right: 10px;
 }
 
 .filter-area select {
-    padding: 9px 15px;
+    padding: 10px 15px;
     border: 1px solid #ccd3df;
     border-radius: 5px;
     background: white;
+    cursor: pointer;
 }
 
-/* Table Styling */
+
+/* ==========================================
+   ACTIVITY 8 - GRID AND LIST BUTTONS
+========================================== */
+
+.view-toggle {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.view-btn {
+    padding: 10px 18px;
+    border: none;
+    background-color: #101d35;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.view-btn:hover {
+    background-color: #243e62;
+}
+
+.view-btn.active {
+    background-color: #ff9d32;
+    color: #101d35;
+}
+
+
+/* ==========================================
+   ACTIVITY 8 - MATCH CARDS USING CSS GRID
+========================================== */
+
+.match-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.match-card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    border-bottom: 4px solid #ff9d32;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+    transition: 0.3s;
+}
+
+.match-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.match-number {
+    display: inline-block;
+    background-color: #101d35;
+    color: #ff9d32;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.match-card h3 {
+    color: #101d35;
+    font-size: 22px;
+    margin: 15px 0;
+}
+
+.match-card p {
+    margin: 8px 0;
+    color: #687589;
+    font-size: 14px;
+}
+
+.ticket-prices {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 18px 0;
+    padding: 12px;
+    background-color: #f4f6fa;
+    border-radius: 6px;
+}
+
+.ticket-prices span {
+    font-size: 13px;
+    font-weight: bold;
+    color: #101d35;
+}
+
+.book-btn {
+    display: inline-block;
+    background-color: #ff9d32;
+    color: #101d35;
+    text-decoration: none;
+    padding: 9px 18px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.book-btn:hover {
+    background-color: #e88720;
+}
+
+
+/* LIST VIEW */
+
+.match-grid.list-view {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.match-grid.list-view .match-card {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 110px 1fr 1fr;
+    align-items: center;
+    gap: 12px;
+}
+
+.match-grid.list-view .match-card h3 {
+    margin: 0;
+}
+
+.match-grid.list-view .ticket-prices {
+    grid-column: 2 / 4;
+}
+
+.match-grid.list-view .book-btn {
+    justify-self: start;
+}
+
+
+/* ==========================================
+   TABLE STYLING - MY BOOKINGS
+========================================== */
+
 .table-container {
     width: 100%;
     overflow-x: auto;
@@ -223,20 +428,16 @@ tbody tr:hover {
     background-color: #fff5e9;
 }
 
-.book-btn {
-    background-color: #ff9d32;
-    color: #101d35;
-    text-decoration: none;
-    padding: 7px 15px;
-    border-radius: 4px;
-    font-weight: bold;
+.empty-message {
+    color: #7b8797;
+    padding: 25px;
 }
 
-.book-btn:hover {
-    background-color: #e88720;
-}
 
-/* Booking Section */
+/* ==========================================
+   BOOKING SECTION
+========================================== */
+
 .booking-container {
     display: grid;
     grid-template-columns: 1.4fr 0.8fr;
@@ -291,7 +492,11 @@ tbody tr:hover {
     background-color: #e88720;
 }
 
-/* Booking Summary */
+
+/* ==========================================
+   BOOKING SUMMARY
+========================================== */
+
 .summary-card {
     background-color: #101d35;
     color: white;
@@ -333,13 +538,11 @@ tbody tr:hover {
     padding: 0;
 }
 
-/* My Bookings */
-.empty-message {
-    color: #7b8797;
-    padding: 25px;
-}
 
-/* Guidelines */
+/* ==========================================
+   GUIDELINES - THREE COLUMN CSS GRID
+========================================== */
+
 .guideline-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -375,7 +578,11 @@ tbody tr:hover {
     font-size: 14px;
 }
 
-/* Footer */
+
+/* ==========================================
+   FOOTER
+========================================== */
+
 footer {
     background-color: #101d35;
     color: white;
@@ -394,74 +601,10 @@ footer p {
     margin: 5px 0;
 }
 
-/* Responsive Design */
-@media (max-width: 900px) {
 
-    .booking-container {
-        grid-template-columns: 1fr;
-    }
-
-    .guideline-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .hero h1 {
-        font-size: 35px;
-    }
-}
-
-@media (max-width: 600px) {
-
-    header {
-        padding: 18px 5%;
-    }
-
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .navbar ul {
-        gap: 12px 18px;
-    }
-
-    .navbar a {
-        font-size: 13px;
-    }
-
-    .hero {
-        min-height: 380px;
-        padding: 45px 6%;
-    }
-
-    .hero h1 {
-        font-size: 30px;
-    }
-
-    .hero p {
-        font-size: 15px;
-    }
-
-    .section {
-        padding: 45px 6%;
-    }
-
-    .section h2 {
-        font-size: 24px;
-    }
-
-    .about-container,
-    .guideline-container {
-        grid-template-columns: 1fr;
-    }
-
-    .booking-form {
-        padding: 20px;
-    }
-}
-
-
-/* ACTIVITY 5 - TOAST NOTIFICATION */
+/* ==========================================
+   ACTIVITY 5 - TOAST NOTIFICATION
+========================================== */
 
 .toast {
     position: fixed;
@@ -487,4 +630,191 @@ footer p {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+
+/* ==========================================
+   ACTIVITY 8 - TABLET RESPONSIVE DESIGN
+========================================== */
+
+@media (max-width: 900px) {
+
+    .booking-container {
+        grid-template-columns: 1fr;
+    }
+
+    .guideline-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .match-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero h1 {
+        font-size: 35px;
+    }
+
+    .navbar ul {
+        gap: 15px;
+    }
+
+}
+
+
+/* ==========================================
+   ACTIVITY 8 - MOBILE RESPONSIVE DESIGN
+========================================== */
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 18px 5%;
+    }
+
+    .navbar {
+        position: relative;
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    /* Show Hamburger */
+
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Hide Navigation Initially */
+
+    .navbar ul {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        width: 100%;
+        padding: 15px 0;
+    }
+
+    /* Show Navigation When Active */
+
+    .navbar ul.active {
+        display: flex;
+    }
+
+    .navbar a {
+        font-size: 14px;
+    }
+
+    /* Hero */
+
+    .hero {
+        min-height: 380px;
+        padding: 45px 6%;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    /* Sections */
+
+    .section {
+        padding: 45px 6%;
+    }
+
+    .section h2 {
+        font-size: 24px;
+    }
+
+    /* Grid Layout */
+
+    .about-container,
+    .match-grid,
+    .guideline-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* List View on Mobile */
+
+    .match-grid.list-view .match-card {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .match-grid.list-view .ticket-prices {
+        width: 100%;
+    }
+
+    /* Filter Area */
+
+    .filter-area {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-area select {
+        width: 100%;
+    }
+
+    .view-toggle {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .view-btn {
+        flex: 1;
+    }
+
+    /* Booking */
+
+    .booking-container {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-form {
+        padding: 20px;
+    }
+
+    .summary-card {
+        padding: 22px;
+    }
+
+    /* Toast */
+
+    .toast {
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        text-align: center;
+    }
+
+}
+
+
+/* ==========================================
+   SMALL MOBILE DEVICES
+========================================== */
+
+@media (max-width: 380px) {
+
+    .hero h1 {
+        font-size: 26px;
+    }
+
+    .section h2 {
+        font-size: 21px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
 }
